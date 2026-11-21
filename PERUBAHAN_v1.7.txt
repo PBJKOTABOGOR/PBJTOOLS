@@ -1,0 +1,10 @@
+PBJTOOLS v1.7 — Tampilan Internal
+
+- Bagian promosi, slogan, contoh file dekoratif, serta kalimat ajakan pada beranda dihapus.
+- Beranda kini menampilkan judul PDF Tools, keterangan singkat, dan akses cepat ke alat.
+- Bagian Dashboard Excel dibuat seperti menu layanan internal, bukan banner promosi.
+- Panduan dan notifikasi memakai bahasa kerja yang ringkas.
+- Tidak ada penambahan fitur atau perubahan fungsi pemrosesan PDF/Excel.
+- Fitur alat yang belum tersedia tetap diberi label; tidak ada tombol palsu.
+- Berkas diproses di browser; pustaka PDF eksternal memerlukan internet.
+- Tanda tangan visual bukan TTE tersertifikasi.

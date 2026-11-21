@@ -1,0 +1,32 @@
+/* PBJTOOLS v1.7 — antarmuka operasional internal; meniadakan bagian promosi. */
+#site .tools-hero.tools-hero-internal{padding:18px 0!important;background:#edf4fa!important;border-bottom:1px solid #d7e4ef;overflow:visible}
+#site .tools-hero.tools-hero-internal::before{display:none!important}
+#site .tools-hero-internal .tools-hero-inner{max-width:1320px!important;display:grid;grid-template-columns:minmax(250px,.72fr) minmax(480px,1.3fr);gap:25px;align-items:center}
+#site .tools-hero-internal .tools-hero-eyebrow{font-size:10px;letter-spacing:1.05px;margin:0 0 6px;color:#3b708f}
+#site .tools-hero-internal h1{font-size:clamp(25px,2.8vw,34px);letter-spacing:-.8px;margin:0 0 4px;color:#143653;line-height:1.15}
+#site .tools-hero-internal p{font-size:12px;line-height:1.6;max-width:440px;color:#5c778c;margin:0}
+#site .tools-hero-internal .hero-launcher{padding:12px 14px;border-radius:12px;box-shadow:none;animation:none;background:#fff;border-color:#d6e5f1}
+#site .tools-hero-internal .launcher-head{margin-bottom:9px}
+#site .tools-hero-internal .launcher-eyebrow{font-size:9px;color:#4b7493;letter-spacing:.8px}
+#site .tools-hero-internal .launcher-head h2{font-size:13px;margin:2px 0 0;letter-spacing:0;color:#23445d}
+#site .tools-hero-internal .launcher-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+#site .tools-hero-internal .launcher-tool{padding:10px 7px;min-height:66px;border:1px solid #e4edf5;border-radius:8px;gap:7px;box-shadow:none;align-items:center}
+#site .tools-hero-internal .launcher-tool:hover{background:#f0f7fe;border-color:#afd5f1;transform:translateY(-1px)}
+#site .tools-hero-internal .launcher-tool strong{font-size:10px;line-height:1.25;white-space:normal}
+#site .tools-hero-internal .launcher-tool small{font-size:9px;color:#718a9d}
+#site .tools-hero-internal .launch-icon{height:30px;width:30px;flex:0 0 30px;border-radius:7px}
+#site .tools-hero-internal .launch-icon svg{height:16px;width:16px}
+#site .tools-directory{padding-top:25px}
+#site .excel-lane{background:#fff!important;color:#193a54!important;border:1px solid #d7e5f0;box-shadow:0 4px 15px #12334c0b;padding:20px 22px;gap:15px}
+#site .excel-lane-icon{background:#e6f1fa}
+#site .excel-lane-icon svg{stroke:#286eac}
+#site .excel-lane-kicker{color:#3e769f;letter-spacing:.8px}
+#site .excel-lane h2{color:#183f5d;font-size:18px;margin:2px 0 3px}
+#site .excel-lane p{color:#668196}
+#site .excel-lane .btn-outline-dark{background:#fff;color:#234d72;border-color:#bfd5e5}
+#site .mini-guide{padding-top:12px}
+#site .guide-heading h2{font-size:20px}
+#site .footer-inner p{font-size:12px}
+@media(max-width:1040px){#site .tools-hero-internal .tools-hero-inner{grid-template-columns:1fr;gap:13px}#site .tools-hero-internal .launcher-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:620px){#site .tools-hero.tools-hero-internal{padding:17px 0!important}#site .tools-hero-internal h1{font-size:26px}#site .tools-hero-internal .tools-hero-inner{gap:13px}#site .tools-hero-internal .launcher-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#site .tools-hero-internal .launcher-tool{padding:9px 11px;min-height:55px}#site .tools-hero-internal .launcher-head h2{font-size:13px}#site .excel-lane{padding:17px}#site .excel-lane-actions{flex-direction:row;flex-wrap:wrap}#site .excel-lane-actions .btn{flex:1}}
+@media(prefers-reduced-motion:reduce){#site .tools-hero-internal .launcher-tool{transition:none}}
