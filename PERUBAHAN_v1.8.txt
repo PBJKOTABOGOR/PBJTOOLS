@@ -1,0 +1,1 @@
+v1.8 — Pendamping Apps Script untuk 4 konversi lewat Google Drive, form upload aman di webapp, dan pencatatan ke Google Sheets. Fitur lama dari v1.7 tetap dipertahankan. Deploy Apps Script dilakukan manual setelah folder & Sheet diprivatkan.

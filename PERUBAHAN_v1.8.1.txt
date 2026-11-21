@@ -1,0 +1,5 @@
+PBJTOOLS v1.8.1
+- URL Google Apps Script /exec sudah diisikan di backend-config.js.
+- Menu konversi Drive akan membuka URL Web App dengan parameter mode sesuai alat (wordpdf, excelpdf, pptpdf, pdfword).
+- Semua fitur v1.8 tetap dipertahankan.
+- Kode deployment Apps Script belum dapat diverifikasi dari URL semata.
