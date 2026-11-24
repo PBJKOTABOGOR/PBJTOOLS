@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#092740"><title>Design Studio | PBJTOOLS</title>
+<link rel="icon" href="assets/favicon.ico"><link rel="stylesheet" href="design-studio.css">
+</head>
+<body>
+<div class="govbar"><span>◆ PEMERINTAH KOTA BOGOR <em>/</em> BAGIAN PENGADAAN BARANG/JASA</span><span>PBJTOOLS · DESIGN STUDIO</span></div>
+<header class="head">
+  <div class="head-left"><a class="back" href="index.html#beranda" title="Kembali ke PBJTOOLS">←</a><a class="brand" href="index.html#beranda"><img src="assets/pbj-logo.png" alt="PBJ"/><span>PBJ<b>TOOLS</b><small>DESIGN STUDIO</small></span></a><span class="head-divider"></span><label class="project-label"><input id="projectTitle" value="Desain tanpa judul" aria-label="Nama desain"><span id="saveLabel">Tersimpan di perangkat</span></label></div>
+  <div class="head-center"><button id="undo" title="Batalkan (Ctrl+Z)">↶ <span>Undo</span></button><button id="redo" title="Ulangi (Ctrl+Y)">↷ <span>Redo</span></button><span class="head-divider"></span><button id="previewBtn" title="Pratinjau desain">◉ <span>Pratinjau</span></button></div>
+  <div class="head-right"><button id="openProject" class="soft-btn" title="Buka proyek .pbjdesign">↥ <span>Buka</span></button><button id="saveProject" class="soft-btn" title="Simpan proyek untuk diedit kembali">▣ <span>Simpan Proyek</span></button><button id="exportBtn" class="primary-btn">↓ <span>Unduh</span></button></div>
+</header>
+<div class="editor-layout">
+  <nav class="rail" aria-label="Menu desain">
+    <button class="rail-btn active" data-tab="templates" title="Template"><span>▦</span><small>Template</small></button>
+    <button class="rail-btn" data-tab="text" title="Teks"><span>T</span><small>Teks</small></button>
+    <button class="rail-btn" data-tab="shapes" title="Elemen"><span>◇</span><small>Elemen</small></button>
+    <button class="rail-btn" data-tab="uploads" title="Unggah"><span>↑</span><small>Unggah</small></button>
+    <button class="rail-btn" data-tab="background" title="Latar"><span>◧</span><small>Latar</small></button>
+    <button class="rail-btn" data-tab="layers" title="Lapisan"><span>▤</span><small>Lapisan</small></button>
+    <a class="rail-btn rail-external" href="image-tools.html" title="Edit Gambar"><span>✧</span><small>Edit Foto</small></a>
+  </nav>
+  <aside class="sidebar" id="sidebar">
+    <div class="side-header"><div><span class="section-kicker">ALAT DESAIN</span><h2 id="sideTitle">Template</h2></div><button id="hideSidebar" title="Tutup panel">‹</button></div>
+    <div class="side-content" id="tab-templates">
+      <label class="search"><span>⌕</span><input id="templateSearch" placeholder="Cari template..." aria-label="Cari template"></label>
+      <p class="side-hint">Pilih ukuran dan tampilan awal. Semua elemen dalam template bisa diedit.</p>
+      <div id="templatesList" class="templates-list"></div>
+    </div>
+    <div class="side-content" id="tab-text" hidden><p class="side-hint">Klik teks dua kali di kanvas untuk mengganti tulisannya.</p>
+      <button class="text-choice choice-headline" data-add-text="heading">Tambahkan judul</button>
+      <button class="text-choice choice-subhead" data-add-text="subheading">Tambahkan subjudul</button>
+      <button class="text-choice choice-body" data-add-text="body">Tambahkan paragraf</button>
+      <div class="side-divider"></div><h3>Gaya teks</h3>
+      <div class="preset-type"><button data-add-text="badge">LABEL / KETERANGAN</button><button data-add-text="quote">“Kutipan singkat”</button></div>
+    </div>
+    <div class="side-content" id="tab-shapes" hidden><p class="side-hint">Klik elemen untuk menambahkan. Geser, putar, dan ubah ukurannya di kanvas.</p><h3>Bentuk dasar</h3>
+      <div class="shape-grid"><button data-add-shape="rect"><span>▭</span>Persegi</button><button data-add-shape="round"><span>▢</span>Sudut bulat</button><button data-add-shape="circle"><span>◯</span>Lingkaran</button><button data-add-shape="line"><span>━</span>Garis</button><button data-add-shape="triangle"><span>△</span>Segitiga</button><button data-add-shape="star"><span>☆</span>Bintang</button></div>
+      <h3>Warna cepat</h3><div class="palette" id="shapeColors"></div>
+    </div>
+    <div class="side-content" id="tab-uploads" hidden><div id="imageDrop" class="drop-zone" tabindex="0"><span>↑</span><strong>Upload foto atau logo</strong><small>PNG, JPG, WEBP · maks. 10 MB</small><button id="pickImages" type="button" class="soft-btn">Pilih gambar</button></div><p class="side-hint">Gambar tetap di perangkat. Kalau mau hapus latar, gunakan menu <a href="image-tools.html">Edit Foto</a>, lalu unggah hasilnya di sini.</p><div id="uploadsList" class="uploads-list"></div></div>
+    <div class="side-content" id="tab-background" hidden><h3>Warna latar halaman</h3><div class="palette" id="bgColors"></div><label class="field">Warna khusus<input type="color" id="backgroundColor" value="#ffffff"></label><div class="side-divider"></div><h3>Ukuran halaman</h3><select id="pageSize" class="full-select"><option value="1080x1080">Persegi · 1080×1080</option><option value="1080x1350">Instagram tegak · 1080×1350</option><option value="1920x1080">Presentasi · 16:9</option><option value="794x1123">Dokumen A4 tegak</option><option value="1123x794">Dokumen A4 mendatar</option><option value="1080x1920">Story · 1080×1920</option></select><p class="side-hint">Mengubah ukuran halaman tidak mengubah ukuran elemen yang sudah dibuat.</p></div>
+    <div class="side-content" id="tab-layers" hidden><div class="layer-controls"><button id="layerUp">↑ Naik</button><button id="layerDown">↓ Turun</button></div><div class="layers-list" id="layersList"></div><p class="side-hint">Lapisan di urutan atas akan terlihat paling depan. Klik lapisan untuk memilih objek.</p></div>
+  </aside>
+  <main class="workspace">
+    <div class="contextbar" id="contextbar">
+      <div class="context-left"><span id="selectionType" class="selection-caption">Tidak ada elemen dipilih</span><span id="contextHint" class="context-hint">Pilih elemen di kanvas untuk mengubahnya</span></div>
+      <div class="quick-text" id="quickTextBar" hidden aria-label="Format teks terpilih">
+      <select id="quickFont" title="Jenis font" aria-label="Jenis font"><option>Arial</option><option>Georgia</option><option>Verdana</option><option>Tahoma</option><option>Trebuchet MS</option><option>Times New Roman</option><option>Courier New</option><option>Impact</option><option>Palatino Linotype</option><option>Segoe UI</option><option>Calibri</option></select>
+      <input id="quickSize" type="number" min="8" max="300" title="Ukuran font" aria-label="Ukuran font"><button id="quickBold" title="Tebal (Ctrl+B)"><b>B</b></button><button id="quickItalic" title="Miring (Ctrl+I)"><i>I</i></button><button id="quickUnderline" title="Garis bawah"><u>U</u></button><input id="quickColor" type="color" title="Warna teks" aria-label="Warna teks">
+    </div><div class="context-actions"><button id="duplicateObject" title="Duplikat objek (Ctrl+D)">⧉ <span>Duplikat</span></button><button id="toFront" title="Bawa ke depan">⇧ <span>Depan</span></button><button id="toBack" title="Kirim ke belakang">⇩ <span>Belakang</span></button><button id="deleteObject" class="danger" title="Hapus objek (Delete)">♜ <span>Hapus</span></button></div>
+    </div>
+    <div class="canvas-scroll" id="canvasScroll"><div id="canvasHolder" class="canvas-holder"><svg id="designCanvas" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kanvas desain" preserveAspectRatio="xMidYMid meet"></svg></div></div>
+    <div class="workspace-bottom"><div class="page-switch"><button id="prevPage">‹</button><span id="pageIndicator">Halaman 1 dari 1</span><button id="nextPage">›</button><button id="addPage">＋ Tambah halaman</button><button id="clonePage" title="Duplikat halaman">⧉</button><button id="removePage" title="Hapus halaman">♜</button></div><div class="zoom-controls"><button id="zoomOut">−</button><span id="zoomLabel">70%</span><button id="zoomIn">＋</button><button id="fitPage">Pas</button></div></div>
+    <div class="pages-strip" id="pagesStrip" aria-label="Daftar halaman"></div>
+  </main>
+  <aside class="inspector" id="inspector"><div class="inspector-top"><span class="section-kicker">PENGATURAN OBJEK</span><h2 id="inspectorTitle">Pilih elemen</h2></div>
+    <div id="inspectorEmpty" class="inspector-empty"><span>↖</span><strong>Pilih elemen di kanvas</strong><p>Atur warna, ukuran, tulisan, posisi, dan transparansi di sini.</p></div>
+    <div id="inspectorControls" hidden>
+      <div id="textInspector" hidden><label class="field">Isi teks<textarea id="propText" rows="3" placeholder="Tulis di sini"></textarea></label><label class="field">Jenis huruf<select id="propFont"><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Verdana">Verdana</option><option value="Tahoma">Tahoma</option><option value="Trebuchet MS">Trebuchet MS</option><option value="Times New Roman">Times New Roman</option><option value="Courier New">Courier New</option><option value="Impact">Impact</option><option value="Palatino Linotype">Palatino Linotype</option><option value="Segoe UI">Segoe UI</option><option value="Calibri">Calibri</option></select></label><div class="two-fields"><label class="field">Ukuran<input type="number" id="propFontSize" min="10" max="300"></label><label class="field">Gaya<select id="propWeight"><option value="normal">Biasa</option><option value="bold">Tebal</option></select></label></div><label class="field">Rata teks<select id="propAlign"><option value="start">Kiri</option><option value="middle">Tengah</option><option value="end">Kanan</option></select></label>
+      <div class="text-style-controls"><button id="propItalic" type="button" title="Miring"><i>I</i> Miring</button><button id="propUnderline" type="button" title="Garis bawah"><u>U</u> Garis bawah</button><button id="propUppercase" type="button" title="Huruf kapital">AA Kapital</button></div>
+      <div class="two-fields"><label class="field">Jarak huruf (px)<input type="number" id="propLetterSpacing" min="-10" max="60" step="0.5"></label><label class="field">Jarak baris<input type="number" id="propLineHeight" min="0.8" max="3" step="0.05"></label></div>
+      <label class="field">Efek teks<select id="propTextEffect"><option value="none">Tanpa efek</option><option value="shadow">Bayangan halus</option><option value="deep">Bayangan tegas</option><option value="glow">Cahaya</option></select></label>
+      <label class="field">Warna efek<input type="color" id="propEffectColor" value="#1a4c78"></label>
+      </div>
+      <div class="two-fields"><label class="field">Warna<input type="color" id="propFill"></label><label class="field">Garis tepi<input type="color" id="propStroke"></label></div><div class="two-fields"><label class="field">Lebar<input type="number" id="propW" min="8" max="4000"></label><label class="field">Tinggi<input type="number" id="propH" min="8" max="4000"></label></div><div class="two-fields"><label class="field">Posisi X<input type="number" id="propX"></label><label class="field">Posisi Y<input type="number" id="propY"></label></div><div class="two-fields"><label class="field">Putar (°)<input type="number" id="propRotate" min="-360" max="360"></label><label class="field">Transparansi (%)<input type="number" id="propOpacity" min="0" max="100"></label></div><div class="align-panel"><span>Sejajarkan di halaman</span><div class="align-buttons"><button type="button" data-align="left" title="Rata kiri halaman">⇤ Kiri</button><button type="button" data-align="center" title="Tengah horizontal">↔ Tengah</button><button type="button" data-align="right" title="Rata kanan halaman">Kanan ⇥</button><button type="button" data-align="top" title="Rata atas halaman">⇡ Atas</button><button type="button" data-align="middle" title="Tengah vertikal">↕ Tengah</button><button type="button" data-align="bottom" title="Rata bawah halaman">Bawah ⇣</button></div></div>
+      <div class="inspector-row"><label><input type="checkbox" id="propLock"> Kunci elemen</label><label><input type="checkbox" id="propVisible" checked> Tampilkan</label></div>
+    </div>
+    <div class="inspector-bottom"><strong>Petunjuk cepat</strong><span>Dobel klik untuk edit teks di kanvas · Ctrl+B/I untuk gaya teks · Ctrl+Z untuk batal · Shift+panah geser 10 px.</span></div>
+  </aside>
+</div>
+<div id="canvasTextEditor" class="canvas-text-editor" hidden><textarea id="liveTextInput" aria-label="Edit teks langsung di kanvas" spellcheck="false"></textarea><div class="inline-edit-tools"><span>Ctrl+Enter simpan · Esc batal</span><button type="button" id="commitCanvasText">Selesai</button></div></div>
+<input type="file" id="imageFile" accept="image/png,image/jpeg,image/webp" multiple hidden><input type="file" id="projectFile" accept=".pbjdesign,.json,application/json" hidden>
+<div class="overlay" id="exportModal" hidden><div class="modal"><div class="modal-head"><div><span class="section-kicker">UNDUH DESAIN</span><h2>Ekspor desain</h2></div><button data-close="exportModal" aria-label="Tutup">✕</button></div><label class="field">Format<select id="exportFormat"><option value="png">PNG · kualitas tinggi</option><option value="jpg">JPG · ukuran kecil</option><option value="pdf">PDF · semua halaman</option><option value="svg">SVG · vektor halaman aktif</option><option value="project">Proyek · bisa diedit lagi</option></select></label><label class="field" id="exportScaleWrap">Resolusi<select id="exportScale"><option value="1">Normal (1×)</option><option value="2" selected>Tinggi (2×)</option><option value="3">Sangat tinggi (3×)</option></select></label><p id="exportNote">PNG dan JPG mengekspor halaman yang sedang dibuka. PDF mengekspor semua halaman.</p><button class="primary-btn modal-action" id="runExport">↓ Unduh sekarang</button><div id="exportStatus" class="modal-status" role="status"></div></div></div>
+<div class="overlay" id="textModal" hidden><div class="modal"><div class="modal-head"><div><span class="section-kicker">EDIT TEKS</span><h2>Ubah tulisan</h2></div><button data-close="textModal" aria-label="Tutup">✕</button></div><textarea id="inlineText" rows="5" aria-label="Teks desain"></textarea><button id="applyText" class="primary-btn modal-action">Simpan tulisan</button></div></div>
+<div class="overlay preview-modal" id="previewModal" hidden><div class="preview-top"><strong>Pratinjau desain</strong><button data-close="previewModal">✕ Tutup</button></div><div class="preview-stage" id="previewStage"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="design-studio.js"></script>
+</body></html>

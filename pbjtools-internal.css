@@ -30,3 +30,16 @@
 @media(max-width:1040px){#site .tools-hero-internal .tools-hero-inner{grid-template-columns:1fr;gap:13px}#site .tools-hero-internal .launcher-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:620px){#site .tools-hero.tools-hero-internal{padding:17px 0!important}#site .tools-hero-internal h1{font-size:26px}#site .tools-hero-internal .tools-hero-inner{gap:13px}#site .tools-hero-internal .launcher-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#site .tools-hero-internal .launcher-tool{padding:9px 11px;min-height:55px}#site .tools-hero-internal .launcher-head h2{font-size:13px}#site .excel-lane{padding:17px}#site .excel-lane-actions{flex-direction:row;flex-wrap:wrap}#site .excel-lane-actions .btn{flex:1}}
 @media(prefers-reduced-motion:reduce){#site .tools-hero-internal .launcher-tool{transition:none}}
+
+/* Image Tools — menu kerja internal */
+#site .image-lane{display:flex;align-items:center;gap:15px;background:#fff;border:1px solid #d7e5f0;border-radius:11px;box-shadow:0 4px 15px #12334c0b;padding:20px 22px;margin-top:20px;margin-bottom:15px;color:#193a54}
+#site .image-lane-icon{width:50px;height:50px;display:grid;place-items:center;font-size:27px;color:#286eac;background:#e6f1fa;border-radius:10px;flex-shrink:0}
+#site .image-lane>div:nth-child(2){flex:1}
+#site .image-lane span{font-size:10px;color:#3e769f;font-weight:850;letter-spacing:.8px}
+#site .image-lane h2{font-size:18px;margin:2px 0 3px;color:#183f5d}
+#site .image-lane p{font-size:12px;margin:0;color:#668196}
+#site .image-lane-actions{display:flex;justify-content:flex-end}
+@media(max-width:620px){#site .image-lane{padding:17px;flex-wrap:wrap}#site .image-lane-actions{width:100%}#site .image-lane-actions .btn{flex:1}}
+
+#site .design-lane{border-color:#bcd9ee;background:linear-gradient(115deg,#fff,#f3f9ff)}
+#site .design-lane .image-lane-icon{background:#e2f0fe;color:#236aaf}

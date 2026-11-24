@@ -1,3 +1,20 @@
+# PBJTOOLS v2.1 — PDF Tools, Image Tools, Dashboard Excel, Design Studio (internal)
+
+Menu **Design Studio** ditambahkan sebagai halaman `design-studio.html`, tanpa mengganti atau merusak logika PDF, Excel, Image Tools, atau backend Apps Script v1.9.
+
+- Editor kanvas dengan panel template, teks, elemen, unggah gambar, latar, lapisan, dan pengaturan objek.
+- Pilihan 8 template asli PBJTOOLS untuk poster, sertifikat, infografis, media sosial, presentasi, agenda, laporan, dan kanvas kosong.
+- Objek bisa diseret, diubah ukuran dan putar, diubah warna, kunci/sembunyikan, duplikat, dan disusun ulang.
+- Undo/redo, beberapa halaman, zoom, simpan proyek editable `.pbjdesign`, autosave di browser, ekspor PNG/JPG/SVG/PDF.
+- Nama hasil ekspor menggunakan akhiran `-PBJtool`.
+- Foto dan dokumen desain tidak dikirim ke server. Autosave bersifat lokal di browser/perangkat yang sama. Unduh `.pbjdesign` untuk backup.
+
+**Batasan:** versi awal tidak mempunyai kolaborasi pengguna, editor video, penghapus latar otomatis langsung dalam kanvas (gunakan Image Tools), atau pustaka template Canva. PDF hasil desain dirasterisasi menjadi gambar per halaman (bukan PDF vektor atau dokumen dengan teks yang bisa dipilih). Pengolahan gambar dan editor Design Studio bisa digunakan offline; beberapa fitur PDF lainnya tetap membutuhkan pustaka CDN seperti versi sebelumnya.
+
+Baca `UPDATE_V2.1_DESIGN_STUDIO.txt` untuk daftar perubahan dan cara pakai.
+
+---
+
 # PBJTOOLS v1.7 — PDF Tools dan Dashboard Excel (internal)
 
 Aplikasi internal berbasis HTML/CSS/JavaScript untuk pengolahan PDF dan data Excel. Beranda langsung menampilkan katalog alat tanpa konten promosi. Menggunakan logo PBJ yang disertakan pengguna. Dashboard Excel pada versi lama tetap dipertahankan. Ini aplikasi beta; jangan anggap sebagai layanan TTE tersertifikasi atau sistem resmi untuk menyimpan dokumen pemerintah.
@@ -74,3 +91,12 @@ Nama file dibersihkan dari karakter yang tidak diperbolehkan sistem operasi. Eks
 ## Status pengujian
 
 Tampilan desktop/HP, filter & favorit, pencarian, alat terakhir digunakan, navigasi workspace, demo Dashboard Excel, dan penamaan ekspor HTML telah diuji di Chromium. Alur Split PDF `3,9,8` serta nama file ZIP telah diuji menggunakan simulasi pustaka PDF. **Pemrosesan PDF asli secara menyeluruh belum diuji**, karena pustaka eksternal membutuhkan jaringan yang sesuai. Lakukan uji dengan PDF asli di browser sebelum dipakai dalam pekerjaan resmi.
+
+
+## Image Tools (v2.0)
+
+Buka `image-tools.html` lewat menu **Image Tools**. Fungsi lokal: hapus warna latar dengan klik, kuas hapus/pulihkan, crop, resize, putar/balik, sesuaikan warna, kompres JPG/WEBP, dan ekspor PNG/JPG/WEBP dengan nama asli `-PBJtool`.
+
+**Hapus latar otomatis:** tombol ini menggunakan `@imgly/background-removal` dengan model dan runtime ONNX yang diunduh saat pertama kali; koneksi internet dibutuhkan, pemrosesan gambar terjadi di browser, dan kemampuan browser/perangkat memengaruhi hasil. Bila belum dapat dijalankan, gunakan penghapus warna/kuas. Komponen pihak ketiga memakai lisensi AGPL-3.0; lihat `IMAGE_TOOLS_THIRD_PARTY.md` sebelum redistribusi.
+
+Tidak perlu mengubah/deploy Apps Script untuk Image Tools. Backend v1.9 tetap sama. File demo `contoh-gambar/contoh-remove-background.png`. Untuk foto sensitif, jangan unggah ke alat lain yang meminta API atau server.
