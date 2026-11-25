@@ -1,49 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="id">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#09243d">
-  <meta name="description" content="PBJTOOLS Image Tools — hapus latar belakang, potong, ubah ukuran, dan kompres gambar di browser.">
-  <title>Image Tools | PBJTOOLS</title>
-  <link rel="icon" href="assets/favicon.ico">
-  <link rel="stylesheet" href="image-tools.css">
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#09243d" name="theme-color"/>
+<meta content="PBJTOOLS Image Tools — hapus latar belakang, potong, ubah ukuran, dan kompres gambar di browser." name="description"/>
+<title>Image Tools | PBJTOOLS</title>
+<link href="assets/favicon.ico" rel="icon"/>
+<link href="image-tools.css" rel="stylesheet"/>
 </head>
 <body>
-  <div class="gov-line"><div class="container top-line"><span><i></i> PEMERINTAH KOTA BOGOR <em>/</em> BAGIAN PENGADAAN BARANG/JASA</span><span>PBJTOOLS · VERSI 2.1</span></div></div>
-  <header class="app-header"><div class="container header-inner"><a href="index.html#beranda" class="brand"><img src="assets/pbj-logo.png" alt="Logo PBJ"><span><b>PBJ<span>TOOLS</span></b><small>PENGOLAHAN DATA DAN DOKUMEN</small></span></a><nav aria-label="Menu utama"><a href="index.html#beranda">PDF Tools</a><a href="image-tools.html" class="current" aria-current="page">Image Tools</a><a href="design-studio.html">Design Studio</a><a href="index.html#data-excel">Dashboard Excel</a></nav><a href="index.html#beranda" class="back-top">← Beranda</a></div></header>
-  <main class="container">
-    <div class="bread">PBJTOOLS <span>/</span> IMAGE TOOLS <span class="local">DIPROSES DI BROWSER</span></div>
-    <div class="page-title"><div><h1>Edit Gambar</h1><p>Hapus latar, potong, ubah ukuran, dan simpan gambar. Berkas tetap di perangkat.</p></div><div class="title-detail"><span class="dot"></span> JPEG · PNG · WEBP</div></div>
-    <section class="studio" aria-label="Pengolahan gambar">
-      <div class="left-side">
-        <div class="panel tools-panel"><div class="panel-head"><span>01 / ALAT GAMBAR</span><h2>Pilih pengolahan</h2></div><div class="tool-tiles" role="group" aria-label="Alat gambar">
-          <button class="tile active" data-mode="remove" aria-pressed="true"><span class="tile-ico">▧</span><strong>Hapus latar</strong><small>Transparan / PNG</small></button>
-          <button class="tile" data-mode="crop" aria-pressed="false"><span class="tile-ico">⌗</span><strong>Potong gambar</strong><small>Pilih area</small></button>
-          <button class="tile" data-mode="resize" aria-pressed="false"><span class="tile-ico">↔</span><strong>Ubah ukuran</strong><small>Lebar & tinggi</small></button>
-          <button class="tile" data-mode="compress" aria-pressed="false"><span class="tile-ico">⇣</span><strong>Kompres gambar</strong><small>JPEG / WEBP</small></button>
-          <button class="tile" data-mode="adjust" aria-pressed="false"><span class="tile-ico">◐</span><strong>Sesuaikan warna</strong><small>Cahaya & kontras</small></button>
-          <button class="tile" data-mode="rotate" aria-pressed="false"><span class="tile-ico">↻</span><strong>Putar / Balik</strong><small>Orientasi</small></button>
-        </div></div>
-        <div class="panel upload-panel"><div class="panel-head"><span>02 / BERKAS</span><h2>Gambar sumber</h2></div><label id="dropZone" class="dropzone" for="imgFile" tabindex="0"><span class="upload-ico">↑</span><strong>Pilih gambar atau tarik ke sini</strong><small>PNG, JPG, WEBP · Maksimal 16 MB</small></label><input type="file" id="imgFile" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" hidden><div id="fileDetail" class="file-detail" hidden><span class="file-badge">IMG</span><div><strong id="fileName">—</strong><small id="fileMeta">—</small></div><button id="replaceImage" class="minor-btn">Ganti</button></div></div>
-        <div class="panel settings-panel"><div class="panel-head"><span>03 / PENGATURAN</span><h2 id="settingsTitle">Hapus latar belakang</h2></div>
-          <div id="mode-remove" class="mode-panel"><p class="field-help">Untuk foto, gunakan hapus otomatis. Untuk latar polos, klik warna yang ingin dihapus.</p><button id="autoRemove" class="main-action" disabled>Hapus latar otomatis</button><small class="notice">Pemakaian pertama membutuhkan internet untuk memuat mesin pemrosesan gambar. Foto tetap di browser.</small><div class="section-divider"><span>ATAU PILIH WARNA LATAR</span></div><p class="field-help">Klik area latar langsung pada gambar. Cocok untuk latar putih, logo, atau cap.</p><label for="tolerance">Toleransi warna <b id="toleranceVal">30</b></label><input id="tolerance" type="range" min="4" max="120" value="30"><button id="colorRemove" class="outline-action" disabled>Pilih warna dari gambar</button><div class="section-divider"><span>RAPIKAN HASIL</span></div><div class="button-row"><button id="brushErase" class="outline-action" disabled>Hapus kuas</button><button id="brushRestore" class="outline-action" disabled>Pulihkan kuas</button></div><label for="brushSize">Ukuran kuas <b id="brushVal">28</b> px</label><input id="brushSize" type="range" min="5" max="120" value="28"><button id="brushDone" class="subtle-action" disabled>Selesai merapikan</button></div>
-          <div id="mode-crop" class="mode-panel" hidden><p class="field-help">Tarik di atas gambar untuk memilih area yang akan dipertahankan.</p><button id="applyCrop" class="main-action" disabled>Potong area pilihan</button><button id="cancelCrop" class="subtle-action" disabled>Batalkan pilihan</button></div>
-          <div id="mode-resize" class="mode-panel" hidden><div class="dimensions"><label>Lebar (px)<input id="imgWidth" type="number" min="1" max="8000" placeholder="Lebar"></label><label>Tinggi (px)<input id="imgHeight" type="number" min="1" max="8000" placeholder="Tinggi"></label></div><label class="check-line"><input type="checkbox" id="lockRatio" checked> Pertahankan rasio gambar</label><button id="applyResize" class="main-action" disabled>Terapkan ukuran</button></div>
-          <div id="mode-compress" class="mode-panel" hidden><label for="compressFormat">Format hasil</label><select id="compressFormat"><option value="image/webp">WEBP — ukuran lebih kecil</option><option value="image/jpeg">JPG — kompatibel luas</option><option value="image/png">PNG — tanpa kehilangan kualitas</option></select><label for="compressQuality">Kualitas <b id="compressQualityVal">78%</b></label><input id="compressQuality" type="range" min="20" max="98" value="78"><p class="field-help">Kualitas memengaruhi JPG dan WEBP. PNG memakai kompresi lossless.</p><button id="applyCompress" class="main-action" disabled>Terapkan pilihan ekspor</button></div>
-          <div id="mode-adjust" class="mode-panel" hidden><label for="brightness">Kecerahan <b id="brightnessVal">0</b></label><input id="brightness" type="range" min="-100" max="100" value="0"><label for="contrast">Kontras <b id="contrastVal">0</b></label><input id="contrast" type="range" min="-100" max="100" value="0"><label for="saturation">Saturasi <b id="saturationVal">0</b></label><input id="saturation" type="range" min="-100" max="100" value="0"><button id="applyAdjust" class="main-action" disabled>Terapkan penyesuaian</button></div>
-          <div id="mode-rotate" class="mode-panel" hidden><div class="button-row two"><button id="rotateLeft" class="outline-action" disabled>↶ 90° kiri</button><button id="rotateRight" class="outline-action" disabled>↷ 90° kanan</button><button id="flipH" class="outline-action" disabled>⇆ Balik horizontal</button><button id="flipV" class="outline-action" disabled>⇅ Balik vertikal</button></div></div>
-        </div>
-      </div>
-      <div class="right-side"><div class="panel preview-panel"><div class="preview-top"><div><span>PRATINJAU GAMBAR</span><strong id="imageDimensions">Belum ada gambar</strong></div><div class="preview-actions"><button id="viewOriginal" class="minor-btn" disabled>Bandingkan asli</button><button id="undoBtn" class="minor-btn" disabled>↶ Batal</button><button id="resetBtn" class="minor-btn" disabled>Atur ulang</button></div></div>
-        <div id="canvasStage" class="canvas-stage"><div id="emptyPreview" class="preview-empty"><span class="empty-icon">▧</span><strong>Belum ada gambar</strong><p>Pilih gambar untuk menampilkan hasil pengolahan.</p></div><div id="canvasPosition" class="canvas-position" hidden><canvas id="editCanvas"></canvas><div id="cropSelection" class="crop-selection" hidden></div><img id="originalOverlay" alt="Gambar sebelum diedit" hidden></div></div>
-        <div class="preview-footer"><div class="preview-swatches" aria-label="Latar pratinjau"><span>Latar pratinjau</span><button data-bg="check" class="swatch checker selected" aria-label="Transparan" title="Transparan">▦</button><button data-bg="white" class="swatch white" aria-label="Putih" title="Putih"></button><button data-bg="dark" class="swatch dark" aria-label="Gelap" title="Gelap"></button></div><div id="editedMeta">—</div></div>
-      </div>
-      <div class="panel export-panel"><div class="export-heading"><div><span>04 / HASIL</span><h2>Unduh gambar</h2><p>Nama file asli dipertahankan dan ditambah -PBJtool.</p></div><span class="format-icon">PNG</span></div><div class="export-controls"><label>Format<select id="exportFormat"><option value="image/png">PNG (transparan)</option><option value="image/jpeg">JPG</option><option value="image/webp">WEBP</option></select></label><label>Kualitas <span id="exportQualityVal">90%</span><input id="exportQuality" type="range" min="20" max="100" value="90"></label></div><div class="status-row"><div id="actionStatus" role="status" aria-live="polite">Pilih gambar untuk memulai.</div><div class="progress" id="imageProgress" hidden><div id="imageBar"></div></div></div><button id="downloadImage" class="download-btn" disabled>↓ &nbsp; Unduh Hasil</button></div>
-      <div class="privacy-info"><span>ⓘ</span><p>Foto dan gambar diolah di browser. Hapus latar otomatis memerlukan model yang diunduh melalui internet. Hasil edit tidak dikirim ke Google Drive.</p></div>
-    </div>
-  </section>
-  <footer>PBJTOOLS · Pengolahan Dokumen dan Data <span>Bagian Pengadaan Barang/Jasa Kota Bogor</span></footer>
-  </main>
-  <script src="image-tools.js"></script>
+<div class="gov-line"><div class="container top-line"><span><i></i> PEMERINTAH KOTA BOGOR <em>/</em> BAGIAN PENGADAAN BARANG/JASA</span><span>PBJTOOLS · VERSI 2.3</span></div></div>
+<header class="app-header"><div class="container header-inner"><a class="brand" href="index.html#beranda"><img alt="Logo PBJ" src="assets/pbj-logo.png"/><span><b>PBJ<span>TOOLS</span></b><small>PENGOLAHAN DATA DAN DOKUMEN</small></span></a><nav aria-label="Menu utama"><a href="index.html#beranda">PDF Tools</a><a aria-current="page" class="current" href="image-tools.html">Image Tools</a><a href="design-studio.html">Design Studio</a><a href="index.html#data-excel">Dashboard Excel</a></nav><a class="back-top" href="index.html#beranda">← Beranda</a></div></header>
+<main class="container">
+<div class="bread">PBJTOOLS <span>/</span> IMAGE TOOLS <span class="local">DIPROSES DI BROWSER</span></div>
+<div class="page-title"><div><h1>Edit Gambar</h1><p>Pilih gambar, atur hasilnya, lalu unduh. Semua proses edit berjalan di perangkat.</p></div><div class="title-detail"><span class="dot"></span> JPEG · PNG · WEBP</div></div>
+<section aria-label="Pengolahan gambar" class="studio">
+<div class="panel tools-panel tool-strip"><div class="panel-head"><span>01 / ALAT GAMBAR</span><h2>Pilih pengolahan</h2></div><div aria-label="Alat gambar" class="tool-tiles" role="group">
+<button aria-pressed="true" class="tile active" data-mode="remove"><span class="tile-ico">▧</span><strong>Hapus latar</strong><small>Transparan / PNG</small></button>
+<button aria-pressed="false" class="tile" data-mode="crop"><span class="tile-ico">⌗</span><strong>Potong gambar</strong><small>Pilih area</small></button>
+<button aria-pressed="false" class="tile" data-mode="resize"><span class="tile-ico">↔</span><strong>Ubah ukuran</strong><small>Lebar &amp; tinggi</small></button>
+<button aria-pressed="false" class="tile" data-mode="compress"><span class="tile-ico">⇣</span><strong>Kompres gambar</strong><small>JPEG / WEBP</small></button>
+<button aria-pressed="false" class="tile" data-mode="adjust"><span class="tile-ico">◐</span><strong>Sesuaikan warna</strong><small>Cahaya &amp; kontras</small></button>
+<button aria-pressed="false" class="tile" data-mode="rotate"><span class="tile-ico">↻</span><strong>Putar / Balik</strong><small>Orientasi</small></button>
+</div></div><div class="workspace"><div class="left-side">
+<div class="panel upload-panel"><div class="panel-head"><span>02 / BERKAS</span><h2>Gambar sumber</h2></div><label class="dropzone" for="imgFile" id="dropZone" tabindex="0"><span class="upload-ico">↑</span><strong>Pilih gambar atau tarik ke sini</strong><small>PNG, JPG, WEBP · Maksimal 16 MB</small></label><input accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" hidden="" id="imgFile" type="file"/><div class="file-detail" hidden="" id="fileDetail"><span class="file-badge">IMG</span><div><strong id="fileName">—</strong><small id="fileMeta">—</small></div><button class="minor-btn" id="replaceImage">Ganti</button></div></div>
+<div class="panel settings-panel"><div class="panel-head"><span>03 / PENGATURAN</span><h2 id="settingsTitle">Hapus latar belakang</h2></div>
+<div class="mode-panel" id="mode-remove"><div aria-label="Cara menghapus latar" class="remove-method-tabs" role="tablist">
+<button aria-selected="true" class="remove-tab active" data-remove-tab="auto" role="tab" type="button">Otomatis</button>
+<button aria-selected="false" class="remove-tab" data-remove-tab="color" role="tab" type="button">Pilih warna</button>
+<button aria-selected="false" class="remove-tab" data-remove-tab="brush" role="tab" type="button">Kuas</button>
+</div>
+<div class="remove-method" data-remove-panel="auto" role="tabpanel">
+<p class="field-help">Paling cocok untuk foto orang atau benda. Pertama kali memerlukan internet untuk mengunduh model.</p>
+<button class="main-action" disabled="" id="autoRemove">Hapus latar otomatis</button>
+<small class="notice">Foto diproses di perangkat. Model pertama kali perlu diunduh.</small>
+</div>
+<div class="remove-method" data-remove-panel="color" hidden="" role="tabpanel">
+<p class="field-help">Cocok untuk latar putih, logo, cap, atau gambar dengan warna polos. Setelah klik tombol, klik latarnya di gambar.</p>
+<label for="tolerance">Toleransi warna <b id="toleranceVal">30</b></label><input id="tolerance" max="120" min="4" type="range" value="30"/>
+<button class="outline-action" disabled="" id="colorRemove">Pilih warna dari gambar</button>
+</div>
+<div class="remove-method" data-remove-panel="brush" hidden="" role="tabpanel">
+<p class="field-help">Usap gambar untuk menghapus bagian kecil atau mengembalikan bagian yang terhapus.</p>
+<div class="button-row"><button class="outline-action" disabled="" id="brushErase">Hapus</button><button class="outline-action" disabled="" id="brushRestore">Pulihkan</button></div>
+<label for="brushSize">Ukuran kuas <b id="brushVal">28</b> px</label><input id="brushSize" max="120" min="5" type="range" value="28"/>
+<button class="subtle-action" disabled="" id="brushDone">Selesai memakai kuas</button>
+</div></div>
+<div class="mode-panel" hidden="" id="mode-crop"><p class="field-help">Tarik di atas gambar untuk memilih area yang akan dipertahankan.</p><div class="crop-options"><span>Rasio potong</span><div aria-label="Rasio potong gambar" class="crop-presets" role="group">
+<button aria-pressed="true" class="crop-preset active" data-crop-ratio="free" type="button">Bebas</button>
+<button class="crop-preset" data-crop-ratio="1" type="button">1:1</button>
+<button class="crop-preset" data-crop-ratio="1.333333" type="button">4:3</button>
+<button class="crop-preset" data-crop-ratio="1.777778" type="button">16:9</button>
+</div></div><p class="crop-help" id="cropHelp">Tarik pada gambar untuk menentukan area potong. Tombol Terapkan ada di atas gambar.</p><button class="main-action" disabled="" id="applyCrop">Potong area pilihan</button><button class="subtle-action" disabled="" id="cancelCrop">Batalkan pilihan</button></div>
+<div class="mode-panel" hidden="" id="mode-resize"><div class="dimensions"><label>Lebar (px)<input id="imgWidth" max="8000" min="1" placeholder="Lebar" type="number"/></label><label>Tinggi (px)<input id="imgHeight" max="8000" min="1" placeholder="Tinggi" type="number"/></label></div><label class="check-line"><input checked="" id="lockRatio" type="checkbox"/> Pertahankan rasio gambar</label><button class="main-action" disabled="" id="applyResize">Terapkan ukuran</button></div>
+<div class="mode-panel" hidden="" id="mode-compress"><label for="compressFormat">Format hasil</label><select id="compressFormat"><option value="image/webp">WEBP — ukuran lebih kecil</option><option value="image/jpeg">JPG — kompatibel luas</option><option value="image/png">PNG — tanpa kehilangan kualitas</option></select><label for="compressQuality">Kualitas <b id="compressQualityVal">78%</b></label><input id="compressQuality" max="98" min="20" type="range" value="78"/><p class="field-help">Kualitas memengaruhi JPG dan WEBP. PNG memakai kompresi lossless.</p><button class="main-action" disabled="" id="applyCompress">Terapkan pilihan ekspor</button></div>
+<div class="mode-panel" hidden="" id="mode-adjust"><label for="brightness">Kecerahan <b id="brightnessVal">0</b></label><input id="brightness" max="100" min="-100" type="range" value="0"/><label for="contrast">Kontras <b id="contrastVal">0</b></label><input id="contrast" max="100" min="-100" type="range" value="0"/><label for="saturation">Saturasi <b id="saturationVal">0</b></label><input id="saturation" max="100" min="-100" type="range" value="0"/><button class="main-action" disabled="" id="applyAdjust">Terapkan penyesuaian</button></div>
+<div class="mode-panel" hidden="" id="mode-rotate"><div class="button-row two"><button class="outline-action" disabled="" id="rotateLeft">↶ 90° kiri</button><button class="outline-action" disabled="" id="rotateRight">↷ 90° kanan</button><button class="outline-action" disabled="" id="flipH">⇆ Balik horizontal</button><button class="outline-action" disabled="" id="flipV">⇅ Balik vertikal</button></div></div>
+</div>
+</div><div class="right-side"><div class="panel preview-panel"><div class="preview-top"><div><span>PRATINJAU GAMBAR</span><strong id="imageDimensions">Belum ada gambar</strong></div><div class="preview-actions"><button class="minor-btn" disabled="" id="quickDownload">↓ Unduh</button><button class="minor-btn" disabled="" id="viewOriginal">Bandingkan asli</button><button class="minor-btn" disabled="" id="undoBtn">↶ Batal</button><button class="minor-btn" disabled="" id="resetBtn">Atur ulang</button><button aria-pressed="false" class="minor-btn" id="expandPreview">⛶ Perbesar</button></div></div><div class="editor-actionbar" id="editorActionbar">
+<div class="action-context"><span class="action-dot"></span><span id="quickHint">Pilih gambar untuk mulai mengedit.</span></div>
+<div class="editor-action-buttons"><button class="toolbar-secondary" hidden="" id="quickCancel" type="button">Batalkan pilihan</button><button class="toolbar-primary" disabled="" hidden="" id="quickApply" type="button">Potong gambar</button></div>
+</div>
+<div aria-label="Kanvas pengolahan gambar" class="canvas-stage" id="canvasStage"><div class="preview-empty" id="emptyPreview"><span class="empty-icon">▧</span><strong>Belum ada gambar</strong><p>Pilih gambar untuk menampilkan hasil pengolahan.</p></div><div class="canvas-position" hidden="" id="canvasPosition"><canvas id="editCanvas"></canvas><div class="crop-selection" hidden="" id="cropSelection"></div><img alt="Gambar sebelum diedit" hidden="" id="originalOverlay"/></div></div>
+<div class="preview-footer"><div aria-label="Latar pratinjau" class="preview-swatches"><span>Latar pratinjau</span><button aria-label="Transparan" class="swatch checker selected" data-bg="check" title="Transparan">▦</button><button aria-label="Putih" class="swatch white" data-bg="white" title="Putih"></button><button aria-label="Gelap" class="swatch dark" data-bg="dark" title="Gelap"></button></div><div id="editedMeta">—</div></div>
+</div>
+<div class="panel export-panel"><div class="export-heading"><div><span>04 / HASIL</span><h2>Unduh gambar</h2><p>Nama file asli dipertahankan dan ditambah -PBJtool.</p></div><span class="format-icon">PNG</span></div><div class="export-controls"><label>Format<select id="exportFormat"><option value="image/png">PNG (transparan)</option><option value="image/jpeg">JPG</option><option value="image/webp">WEBP</option></select></label><label>Kualitas <span id="exportQualityVal">90%</span><input id="exportQuality" max="100" min="20" type="range" value="90"/></label></div><div class="status-row"><div aria-live="polite" id="actionStatus" role="status">Pilih gambar untuk memulai.</div><div class="progress" hidden="" id="imageProgress"><div id="imageBar"></div></div></div><button class="download-btn" disabled="" id="downloadImage">↓   Unduh Hasil</button></div>
+<div class="privacy-info"><span>ⓘ</span><p>Foto dan gambar diolah di browser. Hapus latar otomatis memerlukan model yang diunduh melalui internet. Hasil edit tidak dikirim ke Google Drive.</p></div>
+</div></div></section>
+<footer>PBJTOOLS · Pengolahan Dokumen dan Data <span>Bagian Pengadaan Barang/Jasa Kota Bogor</span></footer>
+</main>
+<script src="image-tools.js"></script>
 </body>
 </html>
